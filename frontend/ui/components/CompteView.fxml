@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.CompteController" spacing="25" styleClass="content-pane">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <VBox spacing="5">
+        <Label text="Gérez vos informations personnelles et vos coordonnées." styleClass="header-subtitle"/>
+    </VBox>
+
+    <VBox spacing="30" styleClass="card-container" maxWidth="700">
+        <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+        <children>
+            
+            <HBox spacing="20" alignment="CENTER_LEFT">
+                <Circle radius="40" fill="#F0F4FF" stroke="#3D7BFF" strokeWidth="2" />
+                <VBox spacing="5">
+                    <Label text="Informations Générales" styleClass="section-title" />
+                    <Label text="Ces informations seront visibles par l'administration." styleClass="help-text-small" />
+                </VBox>
+            </HBox>
+
+            <Separator />
+
+            <VBox spacing="20">
+                <VBox spacing="8">
+                    <Label text="Nom Complet" styleClass="input-label" />
+                    <TextField fx:id="txtNom" promptText="Nom et Prénom" styleClass="login-input" />
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Adresse Email" styleClass="input-label" />
+                    <TextField fx:id="txtEmail" promptText="votre@email.com" styleClass="login-input" />
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Téléphone" styleClass="input-label" />
+                    <TextField fx:id="txtPhone" promptText="+216 -- --- ---" styleClass="login-input" />
+                </VBox>
+            </VBox>
+
+            <Separator />
+
+            <HBox alignment="CENTER_RIGHT" spacing="15">
+                <Button text="Annuler" styleClass="action-button-outline" />
+                <Button text="Mettre à jour le profil" onAction="#onSave" styleClass="action-button-primary" />
+            </HBox>
+        </children>
+    </VBox>
+</VBox>

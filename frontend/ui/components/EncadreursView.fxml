@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.EncadreurViewController" spacing="25" styleClass="content-pane">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <VBox spacing="5">
+            <Label text="Consulter et gérer la liste des professeurs encadreurs." styleClass="header-subtitle"/>
+            <!-- Inline messages (errors / warnings) -->
+            <Label fx:id="lblMessage" text="" styleClass="error-text" visible="false" />
+        </VBox>
+        
+        <Region HBox.hgrow="ALWAYS"/>
+        
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <TextField fx:id="txtSearch" promptText="Rechercher..." styleClass="search-field" prefWidth="200" />
+            
+            <Button text="+ Ajouter" onAction="#onAdd" styleClass="action-button-primary"/>
+            <Button text="Modifier" onAction="#onEdit" styleClass="action-button-outline"/>
+            <Button text="Supprimer" onAction="#onDelete" styleClass="action-button-danger"/>
+        </HBox>
+    </HBox>
+
+    <VBox styleClass="card-container" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tableEncadreurs" VBox.vgrow="ALWAYS" styleClass="modern-table">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+            <columns>
+                <TableColumn fx:id="colId" text="ID" maxWidth="100" />
+                <TableColumn fx:id="colNom" text="Nom" />
+                <TableColumn fx:id="colPrenom" text="Prénom" />
+                <TableColumn fx:id="colGrade" text="Grade" />
+                <TableColumn fx:id="colEmail" text="Email" />
+            </columns>
+        </TableView>
+    </VBox>
+
+</VBox>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.AddEditSoutenanceController" 
+      spacing="0" styleClass="dialog-container" prefWidth="480">
+    
+    <VBox spacing="5" styleClass="dialog-header">
+        <padding><Insets top="20" right="25" bottom="20" left="25"/></padding>
+        <Label text="Planification de Soutenance" styleClass="section-title" />
+        <Label text="Définissez le lieu, la date et l'évaluation finale du projet." styleClass="help-text-small" />
+    </VBox>
+
+    <Separator />
+
+    <ScrollPane fitToWidth="true" styleClass="transparent-scroll">
+        <VBox spacing="20">
+            <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+            <children>
+                
+                <HBox spacing="15">
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Date de l'événement" styleClass="input-label" />
+                        <DatePicker fx:id="dpDate" maxWidth="Infinity" styleClass="login-input" />
+                    </VBox>
+                    <VBox spacing="8" prefWidth="120">
+                        <Label text="Salle" styleClass="input-label" />
+                        <TextField fx:id="txtSalle" promptText="Ex: B204" styleClass="login-input" />
+                    </VBox>
+                </HBox>
+
+                <Separator />
+
+                <VBox spacing="8">
+                    <Label text="Projet PFE Associé" styleClass="input-label" />
+                    <ComboBox fx:id="choicePfe" maxWidth="Infinity" styleClass="modern-choice-box" promptText="Sélectionner le projet..." />
+                </VBox>
+
+                <VBox spacing="8">
+                    <Label text="Note Finale (sur 20)" styleClass="input-label" />
+                    <TextField fx:id="txtNote" promptText="0.00" styleClass="login-input" maxWidth="100" />
+                    <Label text="Laissez vide si la soutenance n'a pas encore eu lieu." styleClass="help-text-small" />
+                </VBox>
+
+                <!-- Inline error label -->
+                <Label fx:id="lblError" text="" styleClass="error-text" visible="false" />
+
+            </children>
+        </VBox>
+    </ScrollPane> 
+
+    <Separator />
+
+    <HBox spacing="12" alignment="CENTER_RIGHT" styleClass="dialog-footer">
+        <padding><Insets top="20" right="25" bottom="20" left="25"/></padding>
+        <Button text="Annuler" onAction="#onCancel" styleClass="action-button-outline" />
+        <Button text="Enregistrer la Soutenance" onAction="#onSave" styleClass="action-button-primary" />
+    </HBox>
+</VBox>

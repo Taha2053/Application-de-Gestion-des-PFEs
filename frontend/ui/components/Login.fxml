@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="frontend.ui.controllers.LoginController" styleClass="login-screen">
+    <VBox spacing="30" alignment="CENTER" maxWidth="400" maxHeight="500"   styleClass="login-card">
+        <padding><Insets top="40" right="40" bottom="40" left="40"/></padding>
+        
+        <VBox spacing="10" alignment="CENTER">
+            <Label text="Application de Gestion des PFEs" styleClass="brand-logo"/>
+            <Label text="Welcome back! Please login to your account." styleClass="header-subtitle" />
+        </VBox>
+
+        <VBox spacing="20">
+            <VBox spacing="8">
+                <Label text="Email Address" styleClass="input-label" />
+                <TextField fx:id="txtEmail" promptText="name@university.com" styleClass="login-input" />
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Password" styleClass="input-label" />
+                <PasswordField fx:id="txtPassword" promptText="••••••••" styleClass="login-input" />
+            </VBox>
+        </VBox>
+
+        <Button text="Sign In" onAction="#onLogin" styleClass="login-button" maxWidth="Infinity" defaultButton="true" />
+        <Label fx:id="lblError" text="" styleClass="error-text" visible="false" />
+        <HBox alignment="CENTER" spacing="5">
+            <Label text="Don't have an account?" styleClass="header-subtitle" />
+            <Label text="Contact Admin" styleClass="link-label" />
+        </HBox>
+    </VBox>
+</StackPane>

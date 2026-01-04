@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.SettingsController" spacing="25" styleClass="content-pane">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <VBox spacing="5">
+        <Label text="Personnalisez votre expérience et gérez les préférences de l'application." styleClass="header-subtitle"/>
+    </VBox>
+
+    <VBox spacing="25" styleClass="card-container" maxWidth="600">
+        <padding><Insets top="30" right="30" bottom="30" left="30"/></padding>
+        <children>
+            
+            <VBox spacing="15">
+                <Label text="Apparence &amp; Interface" styleClass="section-title" />
+                
+                <VBox spacing="8">
+                    <Label text="Thème Visuel" styleClass="input-label" />
+                    <ChoiceBox fx:id="choiceTheme" maxWidth="Infinity" styleClass="modern-choice-box" />
+                    <Label text="Basculez entre le mode clair, sombre ou automatique." styleClass="help-text-small" />
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Langue de l'interface" styleClass="input-label" />
+                    <ChoiceBox fx:id="choiceLang" maxWidth="Infinity" styleClass="modern-choice-box" />
+                </VBox>
+            </VBox>
+
+            <Separator />
+
+            <HBox alignment="CENTER_RIGHT" spacing="15">
+                <Button text="Réinitialiser" styleClass="action-button-outline" />
+                <Button text="Enregistrer les modifications" onAction="#onSave" styleClass="action-button-primary" />
+            </HBox>
+        </children>
+    </VBox>
+</VBox>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.AddEditEncadreurController" 
+      spacing="0" styleClass="dialog-container" prefWidth="450">
+    
+    <VBox spacing="5" styleClass="dialog-header">
+        <padding><Insets top="20" right="25" bottom="20" left="25"/></padding>
+        <Label text="Informations de l'Encadreur" styleClass="section-title" />
+        <Label text="Remplissez les détails pour créer ou modifier un encadreur." styleClass="help-text-small" />
+    </VBox>
+
+    <Separator />
+
+    <VBox spacing="12">
+        <padding><Insets top="20" right="25" bottom="10" left="25"/></padding>
+        <children>
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Nom" styleClass="input-label" />
+                    <TextField fx:id="txtNom" promptText="Ex: Ben Salem" styleClass="login-input" />
+                </VBox>
+
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Prénom" styleClass="input-label" />
+                    <TextField fx:id="txtPrenom" promptText="Ex: Ahmed" styleClass="login-input" />
+                </VBox>
+            </HBox>
+
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Grade Académique" styleClass="input-label" />
+                    <TextField fx:id="txtGrade" promptText="Ex: Maître de Conférences" styleClass="login-input" />
+                </VBox>
+
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Adresse Email" styleClass="input-label" />
+                    <TextField fx:id="txtEmail" promptText="nom.prenom@universite.tn" styleClass="login-input" />
+                </VBox>
+            </HBox>
+
+            <!-- Inline error label -->
+            <Label fx:id="lblError" text="" styleClass="error-text" visible="false" />
+        </children>
+    </VBox>
+
+    <Separator />
+
+    <HBox spacing="12" alignment="CENTER_RIGHT" styleClass="dialog-footer">
+        <padding><Insets top="20" right="25" bottom="20" left="25"/></padding>
+        <Button text="Annuler" onAction="#onCancel" styleClass="action-button-outline" />
+        <Button text="Enregistrer l'Encadreur" onAction="#onSave" styleClass="action-button-primary" />
+    </HBox>
+</VBox>

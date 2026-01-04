@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.AddEditPfeController" 
+      spacing="0" styleClass="dialog-container" prefWidth="550">
+    
+    <VBox spacing="5" styleClass="dialog-header">
+        <padding><Insets top="20" right="25" bottom="20" left="25"/></padding>
+        <Label text="Détails du PFE" styleClass="section-title" />
+        <Label text="Configurez le sujet, l'état d'avancement et l'étudiant assigné." styleClass="help-text-small" />
+    </VBox>
+
+    <Separator />
+
+    <VBox spacing="20">
+        <padding><Insets top="25" right="25" bottom="25" left="25"/></padding>
+        <children>
+            <VBox spacing="8">
+                <Label text="Titre du Projet" styleClass="input-label" />
+                <TextField fx:id="txtTitre" promptText="Ex: Développement d'une plateforme de gestion académique" styleClass="login-input" />
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Description / Résumé" styleClass="input-label" />
+                <TextArea fx:id="txtDescription" promptText="Décrivez brièvement les objectifs du projet..." 
+                           />
+            </VBox>
+
+            <HBox spacing="15">
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="État actuel" styleClass="input-label" />
+                    <ComboBox fx:id="choiceEtat" maxWidth="Infinity" styleClass="modern-choice-box" promptText="Sélectionner l'état" />
+                </VBox>
+                <VBox spacing="8" HBox.hgrow="ALWAYS">
+                    <Label text="Date de Soutenance" styleClass="input-label" />
+                    <DatePicker fx:id="dateSoutenance" maxWidth="Infinity" styleClass="login-input" />
+                </VBox>
+            </HBox>
+
+            <VBox spacing="8">
+                <Label text="Étudiant Responsable" styleClass="input-label" />
+                <ComboBox fx:id="choiceEtudiant" maxWidth="Infinity" styleClass="modern-choice-box" promptText="Rechercher un étudiant..." />
+            </VBox>
+
+            <VBox spacing="8">
+                <Label text="Encadreurs" styleClass="input-label" />
+                <ListView fx:id="choiceEncadreurs" maxWidth="Infinity" styleClass="modern-choice-box" prefHeight="120" />
+                <Label text="Sélectionnez un ou plusieurs encadreurs (Ctrl/Cmd + clic)." styleClass="help-text-small" />
+            </VBox>
+
+            <!-- Inline error label -->
+            <Label fx:id="lblError" text="" styleClass="error-text" visible="false" />
+        </children>
+    </VBox>
+
+    <Separator />
+
+    <HBox spacing="12" alignment="CENTER_RIGHT" styleClass="dialog-footer">
+        <padding><Insets top="20" right="25" bottom="20" left="25"/></padding>
+        <Button text="Annuler" onAction="#onCancel" styleClass="action-button-outline" />
+        <Button text="Enregistrer le Projet" onAction="#onSave" styleClass="action-button-primary" />
+    </HBox>
+</VBox>

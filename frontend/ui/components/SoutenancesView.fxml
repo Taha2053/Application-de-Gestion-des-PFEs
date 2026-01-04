@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.SoutenanceViewController" spacing="25" styleClass="content-pane">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="15">
+        <VBox spacing="5">
+            <Label text="Planifiez les sessions et enregistrez les notes finales des étudiants." styleClass="header-subtitle"/>
+            <!-- Inline messages (errors / warnings) -->
+            <Label fx:id="lblMessage" text="" styleClass="error-text" visible="false" />
+        </VBox>
+        
+        <Region HBox.hgrow="ALWAYS"/>
+        
+        <HBox spacing="12" alignment="CENTER_RIGHT">
+            <TextField fx:id="txtSearch" promptText="Rechercher par date ou salle..." styleClass="search-field" prefWidth="240" />
+            
+            <Button text="+ Planifier" onAction="#onAdd" styleClass="action-button-primary"/>
+            <Button text="Modifier" onAction="#onEdit" styleClass="action-button-outline"/>
+            <Button text="Supprimer" onAction="#onDelete" styleClass="action-button-danger"/>
+        </HBox>
+    </HBox>
+
+    <VBox styleClass="card-container" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tableSoutenances" VBox.vgrow="ALWAYS" styleClass="modern-table">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
+            <columns>
+                <TableColumn fx:id="colId" text="ID" maxWidth="80" />
+                <TableColumn fx:id="colPfe" text="Projet" />
+                <TableColumn fx:id="colEtudiant" text="Étudiant" />
+                <TableColumn fx:id="colDate" text="Date &amp; Heure" />
+                <TableColumn fx:id="colSalle" text="Salle de Soutenance" />
+                <TableColumn fx:id="colNote" text="Note Finale" maxWidth="150" styleClass="note-column" />
+            </columns>
+        </TableView>
+    </VBox>
+
+</VBox>

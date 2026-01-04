@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.HelpViewController" spacing="25" styleClass="content-pane">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <VBox spacing="5">
+        <Label text="Trouvez des réponses et apprenez à utiliser la plateforme Acadex." styleClass="header-subtitle"/>
+    </VBox>
+
+    <VBox spacing="20" styleClass="card-container" maxWidth="800">
+        <children>
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label text="À propos de l'application" styleClass="section-title" />
+            </HBox>
+            
+            <Label wrapText="true" styleClass="help-text" 
+                   text="Cette plateforme centralisée est conçue pour simplifier la gestion du cycle de vie des Projets de Fin d'Études (PFE). Elle vous permet de piloter les dossiers étudiants, de coordonner les encadreurs, et d'organiser les sessions de soutenances en toute fluidité." />
+            
+            <Separator />
+            
+            <Label text="Guide Rapide" styleClass="section-title" />
+            
+            <VBox spacing="12">
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="•" styleClass="bullet-point" />
+                    <Label text="Utilisez la barre latérale gauche pour naviguer entre les différents modules." styleClass="help-text" />
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="•" styleClass="bullet-point" />
+                    <Label text="Le Dashboard vous donne une vue d'ensemble en temps réel de vos statistiques." styleClass="help-text" />
+                </HBox>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="•" styleClass="bullet-point" />
+                    <Label text="Pour toute modification technique, rendez-vous dans l'onglet 'Settings'." styleClass="help-text" />
+                </HBox>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS" />
+            
+            <HBox alignment="CENTER_RIGHT">
+                <Button text="Contacter le Support" styleClass="action-button-outline" />
+            </HBox>
+        </children>
+    </VBox>
+</VBox>

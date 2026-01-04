@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ui.controllers.DashboardController" spacing="25" styleClass="content-pane">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+    
+    <children>
+        <FlowPane hgap="20" vgap="20" prefWrapLength="1000">
+            <VBox spacing="5" styleClass="stat-card" prefWidth="220">
+                <Label text="Étudiants" styleClass="stat-label" />
+                <Label fx:id="lblEtudiants" text="0" styleClass="stat-value" />
+            </VBox>
+
+            <VBox spacing="5" styleClass="stat-card" prefWidth="220">
+                <Label text="Encadreurs" styleClass="stat-label" />
+                <Label fx:id="lblEncadreurs" text="0" styleClass="stat-value" />
+            </VBox>
+
+            <VBox spacing="5" styleClass="stat-card" prefWidth="220">
+                <Label text="Projets PFE" styleClass="stat-label" />
+                <Label fx:id="lblPfe" text="0" styleClass="stat-value" />
+            </VBox>
+
+            <VBox spacing="5" styleClass="stat-card" prefWidth="220">
+                <Label text="Soutenances" styleClass="stat-label" />
+                <Label fx:id="lblSoutenances" text="0" styleClass="stat-value" />
+            </VBox>
+        </FlowPane>
+
+        <HBox spacing="20" VBox.vgrow="ALWAYS">
+            <VBox styleClass="card-container" HBox.hgrow="ALWAYS" spacing="15">
+                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+                <Label text="Soutenances par mois" styleClass="section-title" />
+                <LineChart fx:id="lineChartSoutenances" legendVisible="false" animated="false" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis fx:id="xAxisMonths" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxisCount" label="Nombre" />
+                    </yAxis>
+                </LineChart>
+            </VBox>
+            
+            <VBox styleClass="card-container" prefWidth="400" spacing="15">
+                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+                <Label text="Distribution par état" styleClass="section-title" />
+                <PieChart fx:id="pieChartEtat" legendVisible="true" animated="false" VBox.vgrow="ALWAYS" />
+            </VBox>
+        </HBox>
+        
+        <HBox spacing="20" VBox.vgrow="ALWAYS">
+            <VBox styleClass="card-container" HBox.hgrow="ALWAYS" spacing="15">
+                <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+                <Label text="Notes des soutenances" styleClass="section-title" />
+                <BarChart fx:id="barChartNotes" legendVisible="false" animated="false" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis fx:id="xAxisNotes" label="Plages de notes" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="yAxisNotesCount" label="Nombre" />
+                    </yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+    </children>
+</VBox>
