@@ -33,16 +33,14 @@
             <HBox spacing="15">
                 <VBox spacing="8" HBox.hgrow="ALWAYS">
                     <Label text="Grade Académique" styleClass="input-label" />
-                    <TextField fx:id="txtGrade" promptText="Ex: Maître de Conférences" styleClass="login-input" />
+                    <ComboBox fx:id="choiceGrade" maxWidth="700" styleClass="modern-choice-box" promptText="Sélectionner le grade" />
                 </VBox>
-
                 <VBox spacing="8" HBox.hgrow="ALWAYS">
                     <Label text="Adresse Email" styleClass="input-label" />
                     <TextField fx:id="txtEmail" promptText="nom.prenom@universite.tn" styleClass="login-input" />
                 </VBox>
             </HBox>
 
-            <!-- Inline error label -->
             <Label fx:id="lblError" text="" styleClass="error-text" visible="false" />
         </children>
     </VBox>

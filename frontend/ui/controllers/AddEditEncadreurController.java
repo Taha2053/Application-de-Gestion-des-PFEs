@@ -2,37 +2,47 @@ package frontend.ui.controllers;
 
 import dao.EncadreurDAO;
 import dao.EncadreurDAOImpl;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 import model.Encadreur;
-
 import java.sql.SQLException;
 
 public class AddEditEncadreurController {
-
     @FXML
     private TextField txtNom;
     @FXML
     private TextField txtPrenom;
     @FXML
-    private TextField txtGrade;
+    private ComboBox<String> choiceGrade;
     @FXML
     private TextField txtEmail;
-
+    
     private Encadreur encadreur;
     private final EncadreurDAO encadreurDAO = new EncadreurDAOImpl();
     private boolean saved = false;
-
     private StackPane modalOverlay = null;
     private Runnable onSaved = null;
-
     @FXML
     private Label lblError;
+
+    @FXML
+    public void initialize() {
+        choiceGrade.setItems(FXCollections.observableArrayList(
+            "Professeur",
+            "Maître de Conférences",
+            "Maître Assistant",
+            "Assistant",
+            "Professeur Agrégé",
+            "Chargé de Cours"
+        ));
+    }
 
     public void setModalOverlay(StackPane overlay) {
         this.modalOverlay = overlay;
@@ -47,7 +57,7 @@ public class AddEditEncadreurController {
         if (e != null) {
             txtNom.setText(e.getNom());
             txtPrenom.setText(e.getPrenom());
-            txtGrade.setText(e.getGrade());
+            choiceGrade.setValue(e.getGrade());
             txtEmail.setText(e.getEmail());
         }
     }
@@ -56,11 +66,17 @@ public class AddEditEncadreurController {
     private void onSave(ActionEvent event) {
         String nom = txtNom.getText();
         String prenom = txtPrenom.getText();
-        String grade = txtGrade.getText();
+        String grade = choiceGrade.getValue();
         String email = txtEmail.getText();
 
         if (nom == null || nom.trim().isEmpty() || prenom == null || prenom.trim().isEmpty()) {
             lblError.setText("Le nom et le prénom sont requis.");
+            lblError.setVisible(true);
+            return;
+        }
+
+        if (grade == null || grade.trim().isEmpty()) {
+            lblError.setText("Le grade académique est requis.");
             lblError.setVisible(true);
             return;
         }

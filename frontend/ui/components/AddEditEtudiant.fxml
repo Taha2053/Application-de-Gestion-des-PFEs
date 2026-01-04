@@ -40,7 +40,6 @@
                 </VBox>
             </HBox>
 
-            <!-- Inline error label -->
             <Label fx:id="lblError" text="" styleClass="error-text" visible="false" />
         </children>
     </VBox>

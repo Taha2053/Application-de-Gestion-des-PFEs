@@ -16,12 +16,10 @@ public class CompteController {
 
     @FXML
     private void initialize() {
-        // Load profile from settings or DB if available
     }
 
     @FXML
     private void onSave(ActionEvent event) {
-        // Minimal: show confirmation
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Compte");
         alert.setHeaderText(null);

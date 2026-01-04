@@ -12,6 +12,5 @@ import java.sql.SQLException;
  * @author taha
  */
 public interface SoutenanceDAO extends DAO<Soutenance> {
-    // return idsoutenance for a given pfe, or null if none
     Integer findSoutenanceIdByPfe(int idpfe) throws SQLException;
 }

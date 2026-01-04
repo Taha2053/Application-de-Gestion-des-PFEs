@@ -93,13 +93,10 @@ public class DashboardController implements Initializable {
             List<Soutenance> soutenances = soutenanceDAO.getAll();
             List<Pfe> pfeList = pfeDAO.getAll();
 
-            // Populate line chart - Soutenances per month
             populateLineChart(soutenances);
 
-            // Populate pie chart - Distribution by etat
             populatePieChart(pfeList);
 
-            // Populate bar chart - Notes distribution
             populateBarChart(soutenances);
 
         } catch (SQLException e) {
@@ -111,7 +108,6 @@ public class DashboardController implements Initializable {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Soutenances");
 
-        // Group by month for last 12 months
         Map<String, Long> monthlyCount = new LinkedHashMap<>();
         LocalDate now = LocalDate.now();
         

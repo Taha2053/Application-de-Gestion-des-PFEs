@@ -93,7 +93,6 @@ public class PfeDAOImpl implements PfeDAO {
                 try {
                     etudiant = new dao.EtudiantDAOimpl().get(idetudiant);
                 } catch (SQLException ex) {
-                    // ignore
                 }
 
                 java.util.List<model.Encadreur> encadreurs = new java.util.ArrayList<>();
@@ -107,7 +106,6 @@ public class PfeDAOImpl implements PfeDAO {
                             encadreurs.add(enc);
                     }
                 } catch (SQLException ex) {
-                    // ignore
                 }
 
                 java.sql.Date d = rs.getDate("dateSoutenance");
@@ -137,7 +135,6 @@ public class PfeDAOImpl implements PfeDAO {
                         return size;
                 }
             }
-            // fallback: query information_schema
             try (PreparedStatement ps = con.prepareStatement(
                     "SELECT CHARACTER_MAXIMUM_LENGTH FROM information_schema.columns WHERE table_schema = DATABASE() AND table_name = ? AND column_name = ?")) {
                 ps.setString(1, table);
@@ -148,7 +145,6 @@ public class PfeDAOImpl implements PfeDAO {
                 }
             }
         } catch (SQLException e) {
-            // ignore - return -1
         }
         return -1;
     }
@@ -159,7 +155,6 @@ public class PfeDAOImpl implements PfeDAO {
             throw new SQLException("PFE must have an Etudiant");
         }
 
-        // validate etat length against DB
         int max = getColumnSize("pfe", "etat");
         if (max > 0 && pfe.getEtat() != null && pfe.getEtat().length() > max) {
             throw new SQLException("Le champ 'etat' est limité à " + max + " caractères dans la base de données.");

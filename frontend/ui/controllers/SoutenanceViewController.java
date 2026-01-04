@@ -97,12 +97,10 @@ public class SoutenanceViewController {
             for (Soutenance s : data) {
                 boolean matches = false;
 
-                // Search in salle
                 if (s.getSalle() != null && s.getSalle().toLowerCase().contains(lowerSearch)) {
                     matches = true;
                 }
 
-                // Search in date
                 if (s.getDate() != null) {
                     String dateStr = s.getDate().toString();
                     if (dateStr.contains(lowerSearch)) {
@@ -110,14 +108,12 @@ public class SoutenanceViewController {
                     }
                 }
 
-                // Search in project title if available
                 if (s.getPfe() != null && s.getPfe().getTitre() != null) {
                     if (s.getPfe().getTitre().toLowerCase().contains(lowerSearch)) {
                         matches = true;
                     }
                 }
 
-                // Search in student name if available
                 if (s.getPfe() != null && s.getPfe().getEtudiant() != null) {
                     String nom = (s.getPfe().getEtudiant().getNom() == null ? "" : s.getPfe().getEtudiant().getNom());
                     String prenom = (s.getPfe().getEtudiant().getPrenom() == null ? ""
@@ -167,7 +163,6 @@ public class SoutenanceViewController {
                     MainLayoutController.INSTANCE.refreshSoutenances();
             });
 
-            // keep main window maximized while dialog is shown
             Stage owner = (Stage) tableSoutenances.getScene().getWindow();
             owner.setMaximized(true);
 
@@ -207,7 +202,6 @@ public class SoutenanceViewController {
                     MainLayoutController.INSTANCE.refreshSoutenances();
             });
 
-            // keep main window maximized while dialog is shown
             Stage owner = (Stage) tableSoutenances.getScene().getWindow();
             owner.setMaximized(true);
 

@@ -60,7 +60,6 @@ public class EtudiantViewController {
 
         tableEtudiants.setItems(filteredData);
 
-        // Add filter listener
         if (txtSearch != null) {
             txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
                 filterTable(newValue);
@@ -118,7 +117,6 @@ public class EtudiantViewController {
                     MainLayoutController.INSTANCE.refreshSoutenances();
             });
 
-            // keep main window maximized
             Stage owner = (Stage) tableEtudiants.getScene().getWindow();
             owner.setMaximized(true);
 
@@ -157,7 +155,6 @@ public class EtudiantViewController {
                     MainLayoutController.INSTANCE.refreshSoutenances();
             });
 
-            // keep main window maximized
             Stage owner = (Stage) tableEtudiants.getScene().getWindow();
             owner.setMaximized(true);
 

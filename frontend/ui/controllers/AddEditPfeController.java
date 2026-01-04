@@ -63,15 +63,12 @@ public class AddEditPfeController {
     private final ObservableList<String> etats = FXCollections.observableArrayList();
     private boolean saved = false;
 
-    // callback invoked when this dialog saved successfully (used by parent to
-    // refresh lists)
     private Runnable onSaved = null;
 
     public void setOnSaved(Runnable r) {
         this.onSaved = r;
     }
 
-    // modal overlay (if opened inside main window)
     private StackPane modalOverlay = null;
 
     public void setModalOverlay(StackPane overlay) {
@@ -85,11 +82,9 @@ public class AddEditPfeController {
             etudiants.setAll(list);
             choiceEtudiant.setItems(etudiants);
 
-            // populate possible states
-            etats.setAll("En cours", "Terminé", "En attente");
+            etats.setAll("En cours", "Validé", "Soutenu", "Refusé");
             choiceEtat.setItems(etats);
 
-            // show only student name in the combobox
             choiceEtudiant.setCellFactory(lv -> new ListCell<Etudiant>() {
                 @Override
                 protected void updateItem(Etudiant item, boolean empty) {
@@ -105,7 +100,6 @@ public class AddEditPfeController {
                 }
             });
 
-            // load encadreurs into the multi-select list
             List<Encadreur> listEnc = encadreurDAO.getAll();
             encadreurs.setAll(listEnc);
             choiceEncadreurs.setItems(encadreurs);
@@ -149,7 +143,6 @@ public class AddEditPfeController {
                 }
             }
 
-            // select encadreurs linked to this PFE
             if (p.getEncadreur() != null && !p.getEncadreur().isEmpty()) {
                 for (Encadreur enc : p.getEncadreur()) {
                     for (Encadreur item : encadreurs) {
@@ -190,9 +183,7 @@ public class AddEditPfeController {
                 }
             }
 
-            // prevent assigning the same student to multiple PFEs
             Integer existing = pfeDAO.findPfeIdByEtudiant(selected.getIdetudiant());
-            // capture encadreurs selection
             List<Encadreur> selectedEnc = choiceEncadreurs.getSelectionModel().getSelectedItems();
 
             if (pfe == null) {
@@ -203,7 +194,6 @@ public class AddEditPfeController {
                 Pfe p = new Pfe(titre, desc, etat, d, selected, selectedEnc);
                 pfeDAO.insert(p);
 
-                // after insert, find the new PFE id and persist encadreur mappings
                 Integer newId = pfeDAO.findPfeIdByEtudiant(selected.getIdetudiant());
                 if (newId != null && selectedEnc != null) {
                     for (Encadreur enc : selectedEnc) {
@@ -223,7 +213,6 @@ public class AddEditPfeController {
                 pfe.setEncadreur(selectedEnc);
                 pfeDAO.update(pfe);
 
-                // update encadreur mappings: remove old and insert new
                 List<PfeEncadreur> existingMappings = peDAO.getByPfe(pfe.getIdpfe());
                 if (existingMappings != null) {
                     for (PfeEncadreur pm : existingMappings) {
@@ -269,7 +258,6 @@ public class AddEditPfeController {
     }
 
     private void showError(String title, String details) {
-        // show inline in dialog when possible
         if (lblError != null) {
             lblError.setText(title + ": " + details);
             lblError.setVisible(true);

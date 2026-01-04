@@ -51,7 +51,6 @@
                 <Label text="Sélectionnez un ou plusieurs encadreurs (Ctrl/Cmd + clic)." styleClass="help-text-small" />
             </VBox>
 
-            <!-- Inline error label -->
             <Label fx:id="lblError" text="" styleClass="error-text" visible="false" />
         </children>
     </VBox>

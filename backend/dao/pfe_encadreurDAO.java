@@ -14,7 +14,6 @@ import java.util.List;
 
 
 public interface pfe_encadreurDAO extends DAO<PfeEncadreur> {
-    // Optionally, you can add specific methods for querying by PFE or Encadreur
     List<PfeEncadreur> getByPfe(int idPfe) throws SQLException;
     List<PfeEncadreur> getByEncadreur(int idEncadreur) throws SQLException;
 }

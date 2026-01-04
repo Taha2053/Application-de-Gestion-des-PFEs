@@ -82,7 +82,6 @@ public class PfeViewController {
 
         tablePfe.setItems(filteredData);
 
-        // Add filter listener
         if (txtSearch != null) {
             txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
                 filterTable(newValue);
@@ -151,11 +150,9 @@ public class PfeViewController {
                     MainLayoutController.INSTANCE.refreshSoutenances();
             });
 
-            // keep main window maximized while dialog is shown
             Stage owner = (Stage) tablePfe.getScene().getWindow();
             owner.setMaximized(true);
 
-            // request focus on the dialog root
             dialogRoot.requestFocus();
         } catch (IOException e) {
             showError("Erreur", e.getMessage());
@@ -191,7 +188,6 @@ public class PfeViewController {
                     MainLayoutController.INSTANCE.refreshSoutenances();
             });
 
-            // keep main window maximized while dialog is shown
             Stage owner = (Stage) tablePfe.getScene().getWindow();
             owner.setMaximized(true);
 

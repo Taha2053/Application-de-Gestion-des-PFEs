@@ -29,7 +29,6 @@ public class LoginController {
         String email = txtEmail.getText();
         String password = txtPassword.getText();
 
-        // clear any prior inline error
         if (lblError != null) {
             lblError.setText("");
             lblError.setVisible(false);
@@ -43,7 +42,6 @@ public class LoginController {
                 Scene scene = new Scene(root, 1000, 600);
                 scene.getStylesheets().add(getClass().getResource("/frontend/ui/css/style.css").toExternalForm());
                 stage.setScene(scene);
-                // ensure the main window is maximized so layout is visible immediately
                 stage.setMaximized(true);
             } catch (IOException ex) {
                 if (lblError != null) {

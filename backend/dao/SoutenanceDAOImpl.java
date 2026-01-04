@@ -38,7 +38,6 @@ public class SoutenanceDAOImpl implements SoutenanceDAO {
                     double note = rs.getDouble("note");
                     int idpfe = rs.getInt("idpfe");
 
-                    // load associated PFE if present
                     model.Pfe pfe = null;
                     if (!rs.wasNull()) {
                         dao.PfeDAO pfeDAO = new dao.PfeDAOImpl();
@@ -75,7 +74,6 @@ public class SoutenanceDAOImpl implements SoutenanceDAO {
                 try {
                     pfe = pfeDAO.get(idpfe);
                 } catch (SQLException ex) {
-                    // ignore - leave pfe null
                 }
 
                 list.add(new Soutenance(idsoutenance, date, salle, note, pfe));

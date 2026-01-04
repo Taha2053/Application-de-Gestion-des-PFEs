@@ -10,7 +10,6 @@
     <HBox alignment="CENTER_LEFT" spacing="15">
         <VBox spacing="5">
             <Label text="Planifiez les sessions et enregistrez les notes finales des étudiants." styleClass="header-subtitle"/>
-            <!-- Inline messages (errors / warnings) -->
             <Label fx:id="lblMessage" text="" styleClass="error-text" visible="false" />
         </VBox>
         

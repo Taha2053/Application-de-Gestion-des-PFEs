@@ -12,6 +12,5 @@ import java.sql.SQLException;
  * @author taha
  */
 public interface PfeDAO extends DAO<Pfe> {
-    // return the idpfe of a PFE assigned to the given student, or null if none
     Integer findPfeIdByEtudiant(int idetudiant) throws SQLException;
 }

@@ -44,7 +44,6 @@
                     <Label text="Laissez vide si la soutenance n'a pas encore eu lieu." styleClass="help-text-small" />
                 </VBox>
 
-                <!-- Inline error label -->
                 <Label fx:id="lblError" text="" styleClass="error-text" visible="false" />
 
             </children>

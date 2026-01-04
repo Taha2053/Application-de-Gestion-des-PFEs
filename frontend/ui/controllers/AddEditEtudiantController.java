@@ -59,7 +59,6 @@ public class AddEditEtudiantController {
         String email = txtEmail.getText();
         String classe = txtClasse.getText();
 
-        // validation: nom and prenom required
         if (nom == null || nom.trim().isEmpty() || prenom == null || prenom.trim().isEmpty()) {
             lblError.setText("Le nom et le prénom sont requis.");
             lblError.setVisible(true);
@@ -107,7 +106,6 @@ public class AddEditEtudiantController {
     }
 
     private void showError(String title, String details) {
-        // fallback to label if available
         if (lblError != null) {
             lblError.setText(title + ": " + details);
             lblError.setVisible(true);

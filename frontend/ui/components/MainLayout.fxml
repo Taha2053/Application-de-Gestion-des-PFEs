@@ -37,12 +37,10 @@
         <VBox spacing="20" styleClass="right-sidebar" prefWidth="320">
             <padding><Insets top="25" right="20" bottom="25" left="20"/></padding>
             
-            <!-- Calendar Section -->
             <VBox spacing="10">
                 <Label text="Calendrier" styleClass="section-title"/>
                 
                 <VBox spacing="10" styleClass="calendar-container">
-                    <!-- Month Navigation -->
                     <HBox alignment="CENTER_LEFT">
                         <Button fx:id="btnToday" text="Aujourd'hui" onAction="#onToday" styleClass="nav-button" HBox.hgrow="ALWAYS" maxWidth="Infinity" />
                     </HBox>
@@ -52,7 +50,6 @@
                         <Button fx:id="btnNextMonth" text="›" onAction="#onNextMonth" styleClass="calendar-nav-btn" prefWidth="36"/>
                     </HBox> 
                     
-                    <!-- Calendar Grid -->
                     <GridPane fx:id="calendarGrid" hgap="4" vgap="4" styleClass="calendar-grid">
                         <columnConstraints>
                             <ColumnConstraints percentWidth="14.28" />
@@ -69,7 +66,6 @@
             
             <Separator />
             
-            <!-- Recent Soutenances Section -->
             <VBox spacing="15" VBox.vgrow="ALWAYS">
                 <Label text="Soutenances récentes" styleClass="section-title"/>
                 

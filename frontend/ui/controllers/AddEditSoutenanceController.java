@@ -46,11 +46,9 @@ public class AddEditSoutenanceController {
     private final ObservableList<Pfe> pfes = FXCollections.observableArrayList();
     private boolean saved = false;
 
-    // callback invoked when this dialog saved successfully (used by parent to refresh lists)
     private Runnable onSaved = null;
     public void setOnSaved(Runnable r) { this.onSaved = r; }
 
-    // modal overlay (if opened inside main window)
     private StackPane modalOverlay = null;
 
     public void setModalOverlay(StackPane overlay) {
@@ -64,7 +62,6 @@ public class AddEditSoutenanceController {
             pfes.setAll(list);
             choicePfe.setItems(pfes);
 
-            // show only the PFE title in the combobox
             choicePfe.setCellFactory(lv -> new ListCell<Pfe>() {
                 @Override
                 protected void updateItem(Pfe item, boolean empty) {
@@ -123,11 +120,9 @@ public class AddEditSoutenanceController {
                 note = Double.parseDouble(txtNote.getText());
             Pfe selected = choicePfe.getSelectionModel().getSelectedItem();
             if (selected == null) {
-                // if editing, keep previous PFE association
                 if (soutenance != null && soutenance.getPfe() != null) selected = soutenance.getPfe();
             }
 
-            // prevent creating multiple soutenances for same PFE
             Integer existing = selected != null ? soutenanceDAO.findSoutenanceIdByPfe(selected.getIdpfe()) : null;
             if (soutenance == null) {
                 if (selected != null && existing != null) {

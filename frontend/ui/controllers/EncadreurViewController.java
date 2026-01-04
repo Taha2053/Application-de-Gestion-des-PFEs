@@ -56,7 +56,6 @@ public class EncadreurViewController {
 
         tableEncadreurs.setItems(filteredData);
 
-        // Add filter listener
         if (txtSearch != null) {
             txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
                 filterTable(newValue);
@@ -153,7 +152,6 @@ public class EncadreurViewController {
                     MainLayoutController.INSTANCE.refreshSoutenances();
             });
 
-            // keep main window maximized
             Stage owner = (Stage) tableEncadreurs.getScene().getWindow();
             owner.setMaximized(true);
 

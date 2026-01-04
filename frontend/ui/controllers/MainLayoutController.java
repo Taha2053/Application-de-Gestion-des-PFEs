@@ -29,8 +29,6 @@ import model.Soutenance;
 
 public class MainLayoutController {
 
-    // Single instance reference to allow other controllers to request a schedule
-    // refresh
     public static volatile MainLayoutController INSTANCE;
 
     @FXML
@@ -58,7 +56,6 @@ public class MainLayoutController {
 
     @FXML
     public void initialize() {
-        // register the controller instance for other controllers to call
         INSTANCE = this;
 
         currentMonth = YearMonth.now();
@@ -67,10 +64,7 @@ public class MainLayoutController {
         loadCalendar();
     }
 
-    /**
-     * Refresh the right-hand calendar and schedule; safe to call from other
-     * controllers.
-     */
+
     public void refreshSoutenances() {
         loadRecentSoutenances();
         loadCalendar();
@@ -94,7 +88,6 @@ public class MainLayoutController {
             ordered.addAll(upcoming);
             ordered.addAll(past);
 
-            // Build map of soutenance counts by date
             soutenanceCountByDate.clear();
             for (Soutenance s : allSoutenances) {
                 if (s.getDate() != null) {
@@ -107,7 +100,7 @@ public class MainLayoutController {
             int count = 0;
             for (Soutenance s : ordered) {
                 if (count >= 10)
-                    break; // Show only 10 items (closest first)
+                    break; 
 
                 VBox item = new VBox(5);
                 item.getStyleClass().add("schedule-item");
@@ -148,14 +141,12 @@ public class MainLayoutController {
                 scheduleList.getChildren().add(emptyLabel);
             }
         } catch (SQLException e) {
-            // Silently fail - don't break the UI
         }
     }
 
     private void loadCalendar() {
         calendarGrid.getChildren().clear();
 
-        // Refresh event counts map
         try {
             List<Soutenance> all = soutenanceDAO.getAll();
             soutenanceCountByDate.clear();
@@ -165,14 +156,11 @@ public class MainLayoutController {
                 }
             }
         } catch (SQLException e) {
-            // ignore and proceed
         }
 
-        // Update month label
         DateTimeFormatter monthFormatter = DateTimeFormatter.ofPattern("MMMM yyyy", Locale.FRENCH);
         calendarMonthLabel.setText(currentMonth.format(monthFormatter));
 
-        // Add day headers
         String[] dayHeaders = { "L", "M", "M", "J", "V", "S", "D" };
         for (int i = 0; i < 7; i++) {
             Label dayHeader = new Label(dayHeaders[i]);
@@ -182,12 +170,10 @@ public class MainLayoutController {
             calendarGrid.add(dayHeader, i, 0);
         }
 
-        // Get first day of month and number of days
         LocalDate firstDay = currentMonth.atDay(1);
         int daysInMonth = currentMonth.lengthOfMonth();
         int dayOfWeek = firstDay.getDayOfWeek().getValue() - 1; // Monday = 0
 
-        // Fill calendar
         int row = 1;
         int col = dayOfWeek;
 
@@ -198,7 +184,6 @@ public class MainLayoutController {
             dayCell.setAlignment(Pos.CENTER);
             dayCell.getStyleClass().add("calendar-day-cell");
 
-            // Check if this day has soutenances
             boolean hasSoutenance = soutenanceCountByDate.containsKey(date);
             boolean isToday = date.equals(LocalDate.now());
 
@@ -213,7 +198,6 @@ public class MainLayoutController {
             dayLabel.getStyleClass().add("calendar-day-number");
             dayCell.getChildren().add(dayLabel);
 
-            // Add event indicator
             if (hasSoutenance) {
                 int count = soutenanceCountByDate.get(date);
                 Label indicator = new Label("•".repeat(Math.min(count, 3)));
@@ -321,7 +305,6 @@ public class MainLayoutController {
                 return;
             }
             Pane pane = FXMLLoader.load(url);
-            // make the loaded page fill the content area
             pane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
             pane.prefWidthProperty().bind(contentArea.widthProperty());
             pane.prefHeightProperty().bind(contentArea.heightProperty());
