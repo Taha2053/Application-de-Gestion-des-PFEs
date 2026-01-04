@@ -1,3 +1,5 @@
+![Dashboard Preview](./assets/dashboard.png)
+
 # Gestion des PFE
 
 ## Project Overview
