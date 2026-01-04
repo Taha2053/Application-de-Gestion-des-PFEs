@@ -1,4 +1,4 @@
-![Dashboard Preview](./assets/dashboard.png)
+![Dashboard Preview](image.png)
 
 # Gestion des PFE
 
