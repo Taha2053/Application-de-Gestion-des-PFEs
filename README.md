@@ -22,7 +22,7 @@ Gestion des PFE is a Java-based application designed to manage student projects 
 ## Project Structure
 
 ```
-/mnt/F48238D482389D54/Users/Taha/Desktop/Unlimited_Void/4Projects/Gestion_des_pfe_java/Gestion_des_pfe
+
 ├── build.xml
 ├── manifest.mf
 ├── build/
