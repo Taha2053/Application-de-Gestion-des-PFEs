@@ -8,7 +8,7 @@
     <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
 
     <VBox spacing="5">
-        <Label text="Trouvez des réponses et apprenez à utiliser la plateforme Acadex." styleClass="header-subtitle"/>
+        <Label text="Trouvez des réponses et apprenez à utiliser la plateforme" styleClass="header-subtitle"/>
     </VBox>
 
     <VBox spacing="20" styleClass="card-container" maxWidth="800">
@@ -32,10 +32,6 @@
                 <HBox spacing="10" alignment="CENTER_LEFT">
                     <Label text="•" styleClass="bullet-point" />
                     <Label text="Le Dashboard vous donne une vue d'ensemble en temps réel de vos statistiques." styleClass="help-text" />
-                </HBox>
-                <HBox spacing="10" alignment="CENTER_LEFT">
-                    <Label text="•" styleClass="bullet-point" />
-                    <Label text="Pour toute modification technique, rendez-vous dans l'onglet 'Settings'." styleClass="help-text" />
                 </HBox>
             </VBox>
 

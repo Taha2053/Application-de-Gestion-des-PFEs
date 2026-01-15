@@ -421,7 +421,7 @@
 
 /* Inline error label for dialogs */
 .error-text {
-    -fx-text-fill: #ff4828;
+    -fx-text-fill: #3D7BFF;
     -fx-font-weight: bold;
     -fx-padding: 6 0 0 0;
     -fx-font-size: 13px;
